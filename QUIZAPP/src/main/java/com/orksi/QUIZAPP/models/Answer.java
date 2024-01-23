@@ -23,12 +23,6 @@ public class Answer {
     @JoinColumn(name = "question_id")
     private Question question;
 
-    public Answer(String answerText, boolean isCorrect) {
-        this.answerText = answerText;
-        this.isCorrect = isCorrect;
-    }
-
-
 
     public boolean isCorrect() {
         return isCorrect;
