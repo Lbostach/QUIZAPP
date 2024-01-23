@@ -22,7 +22,11 @@ public class QuestionController {
     public QuestionController(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
-
+    @GetMapping("/{questionId}")
+    public Question getQuestion(@PathVariable int questionId) {
+        return questionRepository.findById(questionId)
+                .orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + questionId));
+    }
     @GetMapping("/{questionId}/answers")
     public List<Answer> getAnswersForQuestion(@PathVariable int questionId) {
         Question question = questionRepository.findById(questionId)
